@@ -8,21 +8,25 @@ use PHPUnit\Framework\TestCase;
 
 class CalculatorTest extends TestCase
 {
+    private Calculator $calculator;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->calculator = new Calculator();
+    }
+
     public function testCalculator(): void
     {
-        $calculator = new Calculator();
         foreach (TestCases::$DATA as $testCase) {
-            $result = $calculator->calculate($testCase['valueA'], $testCase['valueB'], $testCase['operation']);
+            $result = $this->calculator->calculate($testCase['valueA'], $testCase['valueB'], $testCase['operation']);
             self::assertEquals($testCase['expected'], $result);
         }
     }
 
     public function testErrorOnDivisionByZero(): void
     {
-        $calculator = new Calculator();
-
         $this->expectError();
-
-        $calculator->calculate(5, 0, Operations::Divide);
+        $this->calculator->calculate(5, 0, Operations::Divide);
     }
 }
