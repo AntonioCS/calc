@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Calculator{% endblock %}
+
+{% block body %}
+    <div class="row gx-5">
+        {{ form_start(form, {'attr': {'autocomplete': 'off'}}) }}
+            {{ form_widget(form) }}
+        {{ form_end(form) }}
+    </div>
+    {% if result is not null %}
+        <div class="row gx-5">
+            <div class="d-inline p-2">Result: </div>
+            <div id="result" class="d-inline p-2">{{ result }}</div>
+        </div>
+    {% endif %}
+{% endblock %}
