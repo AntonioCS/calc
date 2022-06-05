@@ -12,6 +12,7 @@ class Calculator
         /**
          * NOTE: ExpressionLanguage is not implemented as a service by symfony.
          * It is only used here and is required for this to work, so there is no need for Dependency Injection
+         * I'm using ExpressionLanguage to allow future expansions
          */
         $expressionLanguage = new ExpressionLanguage();
         $op = $operation->value;
