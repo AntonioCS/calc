@@ -16,10 +16,8 @@ class IndexControllerTest extends WebTestCase
         $this->client = static::createClient();
     }
 
-
     public function testFormSubmit(): void
     {
-
         foreach (TestCases::$DATA as $testCase) {
             $result = $this->retrieveResult($testCase['valueA'], $testCase['valueB'], $testCase['operation']);
             self::assertEquals($testCase['expected'], $result);
